@@ -21,11 +21,15 @@ export const filterType = atom({
     default: 'all',
 })
 
-export const filteredToods = selector({
-    key : 'filteredToods',
+export const filteredTodos = selector({
+    key : 'filteredTodos',
     get : ({get}) => {
-        const items = get(tood)
+        const items = get(todos)
         const type = get(filterType)
+
+        console.log("items==" + items);
+        console.log("type==" + type.done);
+        console.log("items.filter(todo => todo.done)==" + items.filter(todo => todo.done));
 
         switch (type) {
             case 'do':
