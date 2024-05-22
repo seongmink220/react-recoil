@@ -1,18 +1,20 @@
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
 import * as state from '../states/todos'
 
 function Footer() {
   const [filterType, setFilterType] = useRecoilState(state.filterType)
-
   const setTodos = useSetRecoilState(state.todos)
 
   const handleClearCompleted = () => {
     setTodos(todos => todos.filter(todo => !todo.done))
   }
 
+  const todos = useRecoilValue(state.todos)
+  const todoCount = todos.filter(todo => !todo.done).length
+
   return (
     <footer className="footer">
-      <span className="todo-count"><strong>0</strong> item left</span>
+      <span className="todo-count"><strong>{todoCount}</strong> item left</span>
       <ul className="filters">
         <li>
           <a className={ filterType === 'all' ? 'selected' : '' } href="#/" onClick={ () => setFilterType('all') }>All</a>

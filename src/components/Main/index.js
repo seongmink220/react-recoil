@@ -24,7 +24,7 @@ function Main() {
             }
         }))
     }
-//    console.log("todos.map===" + Todo.id);
+    // console.log("todos.map===" + Todo.id);
 
     return (
         <section className="main">
@@ -38,7 +38,7 @@ function Main() {
             이를 useRecoilValue로 관리하고 해당 컴포넌트에 훅을 걸어준다.
              */}
             </ul>
-//            <button>클릭</button>
+            {/*<button>클릭</button>*/}
         </section>
     )
 }
