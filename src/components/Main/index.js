@@ -4,9 +4,10 @@ import * as customState from '../states/customState'
 
 import Todo from './Todo';
 import Custom from "./custom";
-import {customAtom} from "../states/customState";
+import {createCustom, customAtom, filteredCustom} from "../states/customState";
 
 function Main() {
+    const submitList = useRecoilState(customAtom);
 
 //    console.log("useRecoilValue(state.todos)==" + useRecoilValue(state.filteredTodos));
     const customLi = useRecoilValue(customState.customAtom)
@@ -31,6 +32,13 @@ function Main() {
     }
     // console.log("todos.map===" + Todo.id);
 
+
+    const customButton = () => {
+        console.log("customButton");
+
+        createCustom("asdsa");
+    }
+
     return (
         <section className="main">
             <input id="toggle-all" className="toggle-all" type="checkbox" checked={ isAllDone } onChange={ handleToggle }/>
@@ -46,6 +54,7 @@ function Main() {
             </ul>
             {/*<button>클릭</button>*/}
             {customList}
+            <button onClick={customButton}>custom</button>
         </section>
     )
 }
